@@ -19,9 +19,15 @@ $app->add(function ($request, $handler) {
         ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 });
 
-// Rutas
-(require __DIR__ . '/../src/routes/get.php')($app);
-(require __DIR__ . '/../src/routes/post.php')($app);
+// Cargar las rutas
+$routeGet = require __DIR__ . '/../src/routes/get.php';
+$routePost = require __DIR__ . '/../src/routes/post.php';
+$routePut = require __DIR__ . '/../src/routes/update.php';
+$routeDelete = require __DIR__ . '/../src/routes/delete.php';
+
+$routeGet($app);
+$routePost($app);
+$routePut($app);
+$routeDelete($app);
 
 $app->run();
-
